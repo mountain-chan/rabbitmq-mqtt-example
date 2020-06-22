@@ -17,9 +17,9 @@ def on_message(client, userdata, message):
     # print("message retain flag=", message.retain)
 
 
-# broker_address="192.168.1.69"
+broker_address = "localhost"
 # broker_address = "iot.eclipse.org"
-broker_address = "test.mosquitto.org"
+# broker_address = "test.mosquitto.org"
 
 client = mqtt.Client("client_subscribe")  # create new instance
 client.on_connect = on_connect

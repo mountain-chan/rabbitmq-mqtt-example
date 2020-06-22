@@ -6,7 +6,9 @@ def on_log(client, userdata, level, buf):
     print("log " + buf)
 
 
-broker_address = "test.mosquitto.org"
+broker_address = "localhost"
+# broker_address = "test.mosquitto.org"
+
 client = mqtt.Client("client_publish")
 # client.on_log = on_log
 client.connect(broker_address)  # connect to broker
