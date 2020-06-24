@@ -3,7 +3,7 @@ import paho.mqtt.client as mqtt
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
-    client.subscribe("my/topic")
+    client.subscribe(topic="my/topic", qos=1)
 
 
 def on_message(client, userdata, message):
@@ -14,7 +14,7 @@ broker_address = "localhost"
 # broker_address = "iot.eclipse.org"
 # broker_address = "test.mosquitto.org"
 
-client = mqtt.Client("client_subscribe")
+client = mqtt.Client(client_id="client_subscribe")
 client.on_connect = on_connect
 client.on_message = on_message
 
