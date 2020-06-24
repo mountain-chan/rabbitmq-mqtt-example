@@ -11,7 +11,7 @@ message = ' '.join(sys.argv[1:]) or "info: Hello World!"
 
 i = 1
 while True:
-    channel.basic_publish(exchange='logs', routing_key='logs', body=message + str(i))
+    channel.basic_publish(exchange='logs', routing_key='', body=message + str(i))
     print(" [x] Sent %r" % message + str(i))
     i += 1
     time.sleep(3)
