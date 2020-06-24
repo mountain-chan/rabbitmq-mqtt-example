@@ -14,7 +14,7 @@ while True:
     channel.basic_publish(exchange='logs', routing_key='', body=message + str(i))
     print(" [x] Sent %r" % message + str(i))
     i += 1
-    time.sleep(3)
+    time.sleep(2)
 
 # connection.close()
 
