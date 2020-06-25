@@ -2,7 +2,7 @@ import paho.mqtt.client as mqtt
 
 
 def on_connect(client, userdata, flags, rc):
-    client.subscribe(topic="my/topic", qos=1)
+    client.subscribe(topic="my/topic")
 
 
 def on_message(client, userdata, message):
