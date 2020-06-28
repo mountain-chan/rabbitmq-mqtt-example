@@ -10,7 +10,7 @@ client.loop_start()
 """
 
 ex1 = """ 
-for i in range(10000):
+for i in range(100000):
     client.publish(topic="my/topic", payload="Message: " + str(i), retain=True)
 client.disconnect()
 """

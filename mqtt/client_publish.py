@@ -7,7 +7,7 @@ client = mqtt.Client(client_id="client_publish")
 client.connect(broker_address)
 client.loop_start()
 
-for i in range(100000):
+for i in range(10000):
     client.publish(topic="my/topic", payload="Message: " + str(i), retain=True)
 client.disconnect()
 

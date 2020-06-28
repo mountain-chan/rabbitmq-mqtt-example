@@ -5,14 +5,15 @@ import pika
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
 channel = connection.channel()
-channel.exchange_declare(exchange='logs', exchange_type='fanout')
+channel.queue_declare(queue='hello')
 """
 
 ex1 = """
 for i in range(100000):
-    channel.basic_publish(exchange='logs', routing_key='', body="Log: " + str(i))
+    channel.basic_publish(exchange='', routing_key='hello', body='Message: '+str(i))
 connection.close()
 """
 
 long = timeit.timeit(ex1, setup=setup, number=1)
 print(long)
+
