@@ -1,17 +1,19 @@
-a="""import timeit
+import timeit
 
-long1 = timeit.timeit('ex1()',
-                      setup='from mqtt.client_publish import ex1',
-                      number=1)
+setup = """
+import paho.mqtt.client as mqtt
 
-print(long1)
-
-long = timeit.timeit('ex2()',
-                     setup='from mqtt.client_publish import ex2',
-                     number=1)
-
-print(long)
+broker_address = "localhost"
+client = mqtt.Client(client_id="client_publish")
+client.connect(broker_address)
+client.loop_start()
 """
 
-"""hhhhh"""
+ex1 = """ 
+for i in range(10000):
+    client.publish(topic="my/topic", payload="Message: " + str(i), retain=True)
+client.disconnect()
+"""
 
+long = timeit.timeit(ex1, setup=setup, number=1)
+print(long)
