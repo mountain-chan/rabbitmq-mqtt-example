@@ -1,3 +1,5 @@
+import datetime
+
 import pika
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
@@ -11,7 +13,9 @@ print(' [*] Waiting for logs. To exit press CTRL+C')
 
 
 def callback(ch, method, properties, body):
-    print(body)
+    time_send = float(body.decode("utf-8"))
+    now_in_second = datetime.datetime.now().timestamp()
+    print(now_in_second - time_send)
 
 
 channel.basic_consume(queue=queue_name, on_message_callback=callback, auto_ack=True)

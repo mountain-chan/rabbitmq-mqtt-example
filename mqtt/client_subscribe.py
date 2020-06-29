@@ -1,3 +1,5 @@
+import datetime
+
 import paho.mqtt.client as mqtt
 
 
@@ -7,12 +9,12 @@ def on_connect(client, userdata, flags, rc):
 
 
 def on_message(client, userdata, message):
-    print(message.payload)
+    time_send = float(message.payload.decode("utf-8"))
+    now_in_second = datetime.datetime.now().timestamp()
+    print(now_in_second-time_send)
 
 
 broker_address = "localhost"
-# broker_address = "iot.eclipse.org"
-# broker_address = "test.mosquitto.org"
 
 client = mqtt.Client(client_id="client_subscribe")
 client.on_connect = on_connect
