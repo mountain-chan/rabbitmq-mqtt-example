@@ -1,4 +1,5 @@
 import datetime
+from urllib.parse import urlparse
 
 import paho.mqtt.client as mqtt
 
@@ -14,13 +15,14 @@ def on_message(client, userdata, message):
     print(now_in_second-time_send)
 
 
-broker_address = "localhost"
+broker_address = "mqtt://bootai:1234567aA@@localhost:1883"
+broker_url = urlparse(broker_address)
+client = mqtt.Client()
+client.username_pw_set(username=broker_url.username, password=broker_url.password)
+client.connect(broker_url.hostname, broker_url.port)
 
-client = mqtt.Client(client_id="client_subscribe")
 client.on_connect = on_connect
 client.on_message = on_message
-
-client.connect(broker_address)  # connect to broker
 
 client.loop_forever()
 client.disconnect()
