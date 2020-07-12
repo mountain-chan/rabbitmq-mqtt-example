@@ -7,7 +7,7 @@ import json
 class QueueProcessing(object):
     def __init__(self):
         MQTT_TOPIC = "STATUS"
-        broker_address = "mqtt://bootai:1234567aA@@192.168.1.57:1883"
+        broker_address = "paho_mqtt://bootai:1234567aA@@192.168.1.57:1883"
         broker_url = urlparse(broker_address)
         mqttc = mosquitto.Client()
         mqttc.username_pw_set(username=broker_url.username, password=broker_url.password)

@@ -4,7 +4,7 @@ from urllib.parse import urlparse
 
 import paho.mqtt.client as mqtt
 
-broker_address = "mqtt://bootai:1234567aA@@localhost:1883"
+broker_address = "paho_mqtt://bootai:1234567aA@@localhost:1883"
 broker_url = urlparse(broker_address)
 client = mqtt.Client()
 client.username_pw_set(username=broker_url.username, password=broker_url.password)

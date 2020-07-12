@@ -15,7 +15,7 @@ def on_message(client, userdata, message):
     print(now_in_second-time_send)
 
 
-broker_address = "mqtt://bootai:1234567aA@@localhost:1883"
+broker_address = "paho_mqtt://bootai:1234567aA@@localhost:1883"
 broker_url = urlparse(broker_address)
 client = mqtt.Client()
 client.username_pw_set(username=broker_url.username, password=broker_url.password)
